@@ -8,4 +8,7 @@ Clone repo
 
 Navigate to cloned code in editor of choice, look at open TODOs. The open TODO's guide the immediate changes to the code upon initial clone of repo.
 
-Optional - Delete .git directory to remove previous history of commits sinc
+Optional - Delete .git directory to remove previous history of commits since they're not needed once the code is change.
+
+## Steps
+Copy the lib/ directory & main.dart file into a newly generated flutter project to avoid manually updating references of 'flutter_starter' to be the new project name.
