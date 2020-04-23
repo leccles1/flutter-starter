@@ -1,13 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_starter/screens/auth/widgets/LoginButton.dart';
 
-class LoginForm extends StatefulWidget {
-  LoginForm({Key key}) : super(key: key);
-
-  @override
-  _LoginFormState createState() => _LoginFormState();
-}
-
-class _LoginFormState extends State<LoginForm> {
+class LoginForm extends StatelessWidget {
   final _formKey = GlobalKey<FormState>();
 
   _validateEmail(String value) {
@@ -29,21 +23,14 @@ class _LoginFormState extends State<LoginForm> {
                 return _validateEmail(value);
               },
               decoration: InputDecoration(
-                  labelText: "Email", hintText: "john.smith@gmail.com"),
+                  labelText: "Email", hintText: "user@email.com"),
             ),
             TextFormField(
               decoration:
                   InputDecoration(hintText: "Password", labelText: 'Password'),
               obscureText: true,
             ),
-            RaisedButton(
-              onPressed: () {
-                if (_formKey.currentState.validate()) {
-                      Navigator.pushReplacementNamed(context, '/');
-                }
-              },
-              child: Text("Login"),
-            )
+            LoginButton()
           ],
         ));
   }

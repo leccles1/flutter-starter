@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_starter/services/auth/firebase/GoogleAuthService.dart';
 
 class HomeScreen extends StatefulWidget {
   HomeScreen({Key key}) : super(key: key);
@@ -24,6 +25,10 @@ class _HomeScreenState extends State<HomeScreen> {
                         value: choice,
                         child: GestureDetector(
                             onTap: () {
+                              if(choice.route == '/auth') {
+                                googleAuthService.signOut();
+                                print("Signed user out");
+                              }
                               Navigator.of(context)
                                   .pushReplacementNamed(choice.route);
                             },
@@ -41,14 +46,14 @@ class _HomeScreenState extends State<HomeScreen> {
 }
 
 class Choice {
-  const Choice({this.title, this.icon, this.route});
+  const Choice({this.title, this.icon, this.route, this.callback});
 
   final String title;
   final IconData icon;
   final String route;
+  final void callback;
 }
-
 const List<Choice> choices = const <Choice>[
-  const Choice(title: 'Settings', icon: Icons.settings, route: '/settings'),
-  const Choice(title: 'Logout', icon: Icons.exit_to_app, route: '/auth')
+  Choice(title: 'Settings', icon: Icons.settings, route: '/settings'),
+  Choice(title: 'Logout', icon: Icons.exit_to_app, route: '/auth')
 ];
